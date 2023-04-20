@@ -1,0 +1,74 @@
+<Header></Header>
+
+<main class="container">
+  <aside class="side-info">
+    <div class="user-info">
+      <img src="{{ user?.avatar_url }}" alt="foto/avatar do usuário" />
+      <div class="content">
+        <h2>{{ user?.name }}</h2>
+        <p>@{{ user?.login }}</p>
+      </div>
+    </div>
+
+    <p class="user-description">
+      {{ user?.bio || "Bio: N/A" }}
+    </p>
+
+    <ul class="content-info">
+      <li class="content-item">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ user?.followers }}</span>
+        <span>seguidores</span>
+      </li>
+      <li class="content-item">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ user?.following }}</span>
+        <span>seguindo</span>
+      </li>
+      <li class="content-item">
+        <mat-icon>start</mat-icon>
+        <span>{{ user?.company || "Empresa: N/A" }}</span>
+      </li>
+      <li class="content-item">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ user?.location }}</span>
+      </li>
+      <li class="content-item">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ user?.email || "E-mail: N/A" }}</span>
+      </li>
+      <li class="content-item">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ user?.site_admin || "Site: N/A" }}</span>
+      </li>
+      <li class="content-item">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ user?.twitter_username || "Twitter: N/A" }}</span>
+      </li>
+    </ul>
+    <div class="top-margin">
+      <app-def-button text_button="Contato"></app-def-button>
+    </div>
+  </aside>
+
+  <section class="repos-container">
+    <article class="repos-info" *ngFor="let info of repos">
+      <h3>
+        <a [href]="info?.clone_url">{{
+          info?.name.split("-").join(" ").split("_").join(" ")
+        }}</a>
+      </h3>
+      <p>{{ info?.description || "Projeto criado em " + info?.language }}</p>
+      <div class="repos-details">
+        <mat-icon>star_border</mat-icon>
+        <span>{{ info?.stargazers_count }}</span>
+        <span>•</span>
+        <span
+          >Atualizado a {{ info?.days }} dia{{
+            info?.days > 1 ? "s" : ""
+          }}</span
+        >
+      </div>
+    </article>
+  </section>
+</main>
