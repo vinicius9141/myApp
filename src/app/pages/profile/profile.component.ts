@@ -25,7 +25,6 @@ export class ProfileComponent {
       this.repos = repos.map((item: any) => {
         return { ...item, days: this.differenceDay(item.updated_at) };
       });
-      console.log(this.repos);
     });
   }
 
