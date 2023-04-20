@@ -11,7 +11,7 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   public searchGit(e: any) {
-    if (e.key == 'Enter') {
+    if (e.key == 'Enter' || e.pointerType === 'mouse') {
       this.router.navigate([`/profile/${e.target.value}`]);
     }
   }
